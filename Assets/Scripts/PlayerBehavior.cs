@@ -128,6 +128,12 @@ public class PlayerBehavior : MonoBehaviour
             Debug.Log("You gain 1 exp !");
         }
 
+        if(other.gameObject.tag == "Arme")
+        {
+            startTimeAttack--;
+            Destroy(other.gameObject);
+        }
+
         if (other.gameObject.tag == "Enemy" && attackTime <= 0)
         {
             StartCoroutine(Attack());

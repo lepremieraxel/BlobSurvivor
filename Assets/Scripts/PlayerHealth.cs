@@ -47,6 +47,7 @@ public class PlayerHealth : MonoBehaviour
         if (other.gameObject.tag == "PotionV")
         {
             maxHealth++;
+            currentHealth++;
             Destroy(other.gameObject);
             Debug.Log("You gain 1 max health");
         }

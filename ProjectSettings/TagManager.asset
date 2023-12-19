@@ -9,6 +9,7 @@ TagManager:
   - PotionB
   - PotionR
   - Exp
+  - Arme
   layers:
   - Default
   - TransparentFX
