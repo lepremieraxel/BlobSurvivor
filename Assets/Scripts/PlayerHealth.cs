@@ -32,7 +32,7 @@ public class PlayerHealth : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("collision"+ playerBehavior.invincible);
-        if (other.gameObject.tag == "Enemy" && playerBehavior.invincible == false)
+        if (other.gameObject.tag == "enemy" && playerBehavior.invincible == false)
         {            
                 TakeDamage(1);
                 
@@ -56,6 +56,7 @@ public class PlayerHealth : MonoBehaviour
     public void Death(){
         if(currentHealth == 0){
             Debug.Log("You are bad haha noob");
+            Destroy(gameObject);
         }
     }
 }

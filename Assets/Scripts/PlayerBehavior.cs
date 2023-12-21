@@ -134,7 +134,7 @@ public class PlayerBehavior : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-        if (other.gameObject.tag == "Enemy" && attackTime <= 0)
+        if (other.gameObject.tag == "enemy" && attackTime <= 0)
         {
             StartCoroutine(Attack());
             
