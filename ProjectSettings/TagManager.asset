@@ -4,11 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - PotionV
-  - PotionB
-  - PotionR
-  - Exp
-  - Arme
+  - player
   - enemy
   layers:
   - Default
