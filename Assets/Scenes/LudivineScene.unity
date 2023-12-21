@@ -225,6 +225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1031953042}
   - component: {fileID: 1031953041}
+  - component: {fileID: 1031953043}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -247,7 +248,7 @@ MonoBehaviour:
   Blob: {fileID: 78671296134367160, guid: c4208227f94cbaf47a6a318813a4bdf2, type: 3}
   BlobShooter: {fileID: 2719369945669302069, guid: 0a910290330fcc84f99108227c676dc5, type: 3}
   BlobSpeeder: {fileID: 3063202278444224645, guid: 4416eb1842641ca4b960a21401fedb84, type: 3}
-  zoneSize: {x: 10, y: 10, z: 0}
+  zoneSize: {x: 15, y: 10, z: 0}
 --- !u!4 &1031953042
 Transform:
   m_ObjectHideFlags: 0
@@ -263,6 +264,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1031953043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031953040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 984959274fa15d744a5b9abff3d183fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_objectToFollow: {fileID: 1168131106}
 --- !u!1 &1168131106
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,6 +288,9 @@ GameObject:
   - component: {fileID: 1168131108}
   - component: {fileID: 1168131107}
   - component: {fileID: 1168131109}
+  - component: {fileID: 1168131110}
+  - component: {fileID: 1168131112}
+  - component: {fileID: 1168131111}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -322,7 +339,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -1741630385, guid: 2e6cfaeb7fb32244282bd01ff1ff8c9f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -384,7 +401,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -393,6 +410,71 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1168131110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168131106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f0674535ce532449b64787863182bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_speed: 0.1
+  exp: 0
+  m_frontSprite: {fileID: -1741630385, guid: 2e6cfaeb7fb32244282bd01ff1ff8c9f, type: 3}
+  m_leftSprite: {fileID: -1577587927, guid: 171b2cf12f048d14eb6aba4b0d734902, type: 3}
+  m_rightSprite: {fileID: 934832698, guid: 14b1a84a60a04a4419d6b7a1f23326c0, type: 3}
+  m_backSprite: {fileID: -278635755, guid: 6c93003bdfba5c84891369d1f204a134, type: 3}
+  m_map: {fileID: 0}
+  invincible: 0
+  attackTime: 0
+  startTimeAttack: 0
+  invincibilityDeltaTime: 0
+--- !u!50 &1168131111
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168131106}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &1168131112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168131106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a402f9be0ba579b45bf7b98facded816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  currentHealth: 0
+  playerBehavior: {fileID: 1168131110}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

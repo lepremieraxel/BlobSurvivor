@@ -13,10 +13,10 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, lifespan);
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         // Gérer la collision avec d'autres objets
-        if (other.CompareTag("Player"))
+        if (collision.collider.CompareTag("Player"))
         {
             // Détruire le projectile lorsqu'il touche le joueur
             Destroy(gameObject);

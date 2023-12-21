@@ -20,8 +20,8 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         InvokeRepeating("SpawnPrefab1", 0f, 5f);
-        InvokeRepeating("SpawnPrefab2", 0f, 15f);
-        InvokeRepeating("SpawnPrefab3", 0f, 10f);
+        InvokeRepeating("SpawnPrefab2", 10f, 15f);
+        InvokeRepeating("SpawnPrefab3", 20f, 10f);
     }
 
     void SpawnPrefab1()
