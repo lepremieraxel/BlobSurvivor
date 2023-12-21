@@ -29,6 +29,8 @@ public class PlayerBehavior : MonoBehaviour
     public float invincibilityDeltaTime;
     Rigidbody2D m_rb2D;
     SpriteRenderer m_renderer;
+    [SerializeField]
+    private GameObject luciole;
 
     void Awake()
     {
@@ -137,7 +139,7 @@ public class PlayerBehavior : MonoBehaviour
         if (other.gameObject.tag == "enemy" && attackTime <= 0)
         {
             StartCoroutine(Attack());
-            
+            Instantiate(luciole, other.gameObject.transform.position, Quaternion.identity);
         }   
             
         IEnumerator Attack()

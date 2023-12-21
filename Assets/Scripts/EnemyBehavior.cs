@@ -18,6 +18,8 @@ public class EnemyBehavior : MonoBehaviour
         Vector3 direction = player.position - transform.position;
         direction.Normalize();
         transform.Translate(direction * moveSpeed * Time.deltaTime, Space.World);
+
+  
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -26,5 +28,5 @@ public class EnemyBehavior : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    
 }
