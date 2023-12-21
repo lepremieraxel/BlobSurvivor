@@ -117,7 +117,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         if (other.gameObject.tag == "PotionB")
         {
-             m_speed = m_speed + 0.1f;
+             m_speed = m_speed + 0.01f;
             Destroy(other.gameObject);
             Debug.Log("You're faster !");
         }

@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  moveSpeed: 5
+  moveSpeed: 1
   bulletPrefab: {fileID: 944244421493559817, guid: 2580235080ae80a4eb6c1059231e6dc3, type: 3}
   fireRate: 1
   speed: 5
