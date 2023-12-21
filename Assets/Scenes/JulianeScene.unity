@@ -569,7 +569,7 @@ GameObject:
   - component: {fileID: 934061696}
   m_Layer: 0
   m_Name: Fake Enemy (1)
-  m_TagString: Enemy
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1068,7 +1068,7 @@ GameObject:
   - component: {fileID: 1871404738}
   m_Layer: 0
   m_Name: Fake Enemy (2)
-  m_TagString: Enemy
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
