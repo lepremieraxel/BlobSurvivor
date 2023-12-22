@@ -158,6 +158,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_speed: 0.1
   exp: 0
+  nextLevelUp: 10
+  level: 1
   m_frontSprite: {fileID: -1741630385, guid: 2e6cfaeb7fb32244282bd01ff1ff8c9f, type: 3}
   m_leftSprite: {fileID: -1577587927, guid: 171b2cf12f048d14eb6aba4b0d734902, type: 3}
   m_rightSprite: {fileID: 934832698, guid: 14b1a84a60a04a4419d6b7a1f23326c0, type: 3}
@@ -438,7 +440,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1081624732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -560,7 +562,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3433962, g: 0.23497501, b: 0.17040224, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

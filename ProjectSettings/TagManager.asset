@@ -12,6 +12,7 @@ TagManager:
   - PotionV
   - Undefined
   - exp
+  - Arme
   layers:
   - Default
   - TransparentFX

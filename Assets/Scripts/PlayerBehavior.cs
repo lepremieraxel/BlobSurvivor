@@ -16,7 +16,8 @@ public class PlayerBehavior : MonoBehaviour
     public float m_speed = 0.1f; // Speed of the player when he moves
     private CardinalDirections m_direction; // Current facing direction of the player
     public int exp = 0; //experience of the player
-    
+    public int nextLevelUp = 10; //experience need for level up
+    public int level = 1; //player level
     public Sprite m_frontSprite = null;
     public Sprite m_leftSprite = null;
     public Sprite m_rightSprite = null;
@@ -116,6 +117,12 @@ public class PlayerBehavior : MonoBehaviour
             m_renderer.sprite = m_leftSprite;
         }
     }
+
+    public void levelUp()
+    {
+        nextLevelUp += 20;
+        level++;
+    }
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "PotionB")
@@ -129,6 +136,10 @@ public class PlayerBehavior : MonoBehaviour
             exp++;
             Destroy(other.gameObject);
             Debug.Log("You gain 1 exp !");
+            if (exp >= nextLevelUp)
+            {
+                levelUp();
+            }
         }
 
         if(other.gameObject.tag == "Arme")
