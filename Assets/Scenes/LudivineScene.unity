@@ -394,7 +394,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -431,8 +431,9 @@ MonoBehaviour:
   m_map: {fileID: 0}
   invincible: 0
   attackTime: 0
-  startTimeAttack: 0
+  startTimeAttack: 3
   invincibilityDeltaTime: 0
+  luciole: {fileID: 5484747388644714601, guid: e6e93e8118fd155499d7278f179b10a7, type: 3}
 --- !u!50 &1168131111
 Rigidbody2D:
   serializedVersion: 4
@@ -459,7 +460,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1168131112
 MonoBehaviour:
   m_ObjectHideFlags: 0

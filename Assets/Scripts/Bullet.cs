@@ -5,12 +5,20 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed = 5f; // Vitesse du projectile
-    public float lifespan = 5f; // Durée de vie du projectile en secondes
+    public float lifespan = 3f; // Durée de vie du projectile en secondes
 
     void Start()
     {
-        // Détruire le projectile après un certain temps pour éviter les fuites mémoire
-        Destroy(gameObject, lifespan);
+        StartCoroutine(DestroyAfterDelay(3f));
+    }
+
+    IEnumerator DestroyAfterDelay(float delay)
+    {
+        // Attendre pendant le délai spécifié
+        yield return new WaitForSeconds(delay);
+
+        // Détruire le GameObject après le délai
+        Destroy(gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D collision)

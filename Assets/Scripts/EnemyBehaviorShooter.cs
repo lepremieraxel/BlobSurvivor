@@ -29,14 +29,6 @@ public class EnemyBehaviorShooter : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-        }
-    }
-
     void Shoot()
     {
         // Instanciation du projectile au point de tir

@@ -19,9 +19,9 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Start()
     {
-        InvokeRepeating("SpawnPrefab1", 0f, 5f);
-        InvokeRepeating("SpawnPrefab2", 10f, 15f);
-        InvokeRepeating("SpawnPrefab3", 20f, 10f);
+        InvokeRepeating("SpawnPrefab1", 2f, 5f);
+        InvokeRepeating("SpawnPrefab2", 20f, 10f);
+        InvokeRepeating("SpawnPrefab3", 10f, 15f);
     }
 
     void SpawnPrefab1()

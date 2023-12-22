@@ -100,7 +100,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   moveSpeed: 1
-  luciole: {fileID: 5484747388644714601, guid: e6e93e8118fd155499d7278f179b10a7, type: 3}
 --- !u!61 &-4094613157511145653
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -130,7 +129,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
