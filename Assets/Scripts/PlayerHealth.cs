@@ -7,7 +7,8 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 3;
     public int currentHealth;
     public PlayerBehavior playerBehavior;
-    
+    public int damagesTaken = 0;
+   
     //public HealthBar healthBar;
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class PlayerHealth : MonoBehaviour
     void TakeDamage(int damage){
         currentHealth = currentHealth - damage;
         Debug.Log("You took 1 damage");
+        damagesTaken++;
         // healthBar.SetHealth(currentHealth);
         // OnTriggerEnter2D(other.gameObject.CompareTag);
     }

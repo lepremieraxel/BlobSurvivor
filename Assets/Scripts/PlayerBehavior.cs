@@ -31,6 +31,7 @@ public class PlayerBehavior : MonoBehaviour
     SpriteRenderer m_renderer;
     [SerializeField]
     private GameObject luciole;
+    public int enemyKilled;
 
     void Awake()
     {
@@ -123,7 +124,7 @@ public class PlayerBehavior : MonoBehaviour
             Destroy(other.gameObject);
             Debug.Log("You're faster !");
         }
-        if (other.gameObject.tag == "Exp")
+        if (other.gameObject.tag == "exp")
         {
             exp++;
             Destroy(other.gameObject);
@@ -140,6 +141,7 @@ public class PlayerBehavior : MonoBehaviour
         {
             StartCoroutine(Attack());
             Instantiate(luciole, other.gameObject.transform.position, Quaternion.identity);
+            enemyKilled++;
         }   
             
         IEnumerator Attack()

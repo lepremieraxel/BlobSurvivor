@@ -10,6 +10,8 @@ TagManager:
   - bullet
   - PotionB
   - PotionV
+  - Undefined
+  - exp
   layers:
   - Default
   - TransparentFX

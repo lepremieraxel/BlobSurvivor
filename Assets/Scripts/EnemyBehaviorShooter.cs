@@ -28,15 +28,6 @@ public class EnemyBehaviorShooter : MonoBehaviour
             nextFireTime = Time.time + 1f / fireRate;
         }
     }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-        }
-    }
-
     void Shoot()
     {
         // Instanciation du projectile au point de tir

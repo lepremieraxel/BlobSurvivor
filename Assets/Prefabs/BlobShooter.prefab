@@ -148,7 +148,7 @@ MonoBehaviour:
   moveSpeed: 1
   bulletPrefab: {fileID: 944244421493559817, guid: 2580235080ae80a4eb6c1059231e6dc3, type: 3}
   fireRate: 1
-  speed: 5
+  speed: 3
 --- !u!61 &540454754349140923
 BoxCollider2D:
   m_ObjectHideFlags: 0

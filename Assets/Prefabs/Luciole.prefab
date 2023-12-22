@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 275983750427696561}
   m_Layer: 0
   m_Name: Luciole
-  m_TagString: Exp
+  m_TagString: exp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
