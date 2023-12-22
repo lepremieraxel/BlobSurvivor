@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -8,7 +9,9 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealth;
     public PlayerBehavior playerBehavior;
     public int damagesTaken = 0;
-   
+    [SerializeField]
+    private GameObject dieScreen;
+
     //public HealthBar healthBar;
     // Start is called before the first frame update
     void Start()
@@ -33,7 +36,7 @@ public class PlayerHealth : MonoBehaviour
  
     public void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("collision"+ playerBehavior.invincible);
+        //Debug.Log("collision"+ playerBehavior.invincible);
         if ((other.gameObject.tag == "enemy" || other.gameObject.tag == "bullet") && playerBehavior.invincible == false)
         {            
                 TakeDamage(1);
@@ -58,7 +61,8 @@ public class PlayerHealth : MonoBehaviour
     public void Death(){
         if(currentHealth == 0){
             Debug.Log("You are bad haha noob");
-            Destroy(gameObject);
+            Instantiate(dieScreen, transform.position, Quaternion.identity);
         }
     }
+    
 }
