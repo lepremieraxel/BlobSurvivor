@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 // Represents the cardinal directions (South, North, West, East)
 public enum CardinalDirections { CARDINAL_S, CARDINAL_N, CARDINAL_W, CARDINAL_E };
 
@@ -16,7 +17,8 @@ public class PlayerBehavior : MonoBehaviour
     public float m_speed = 0.1f; // Speed of the player when he moves
     private CardinalDirections m_direction; // Current facing direction of the player
     public int exp = 0; //experience of the player
-    
+    public int nextLevelUp = 10; //experience need for level up
+    public int level = 1; //player level
     public Sprite m_frontSprite = null;
     public Sprite m_leftSprite = null;
     public Sprite m_rightSprite = null;
@@ -31,6 +33,7 @@ public class PlayerBehavior : MonoBehaviour
     SpriteRenderer m_renderer;
     [SerializeField]
     private GameObject luciole;
+    public int enemyKilled;
 
     void Awake()
     {
@@ -115,6 +118,12 @@ public class PlayerBehavior : MonoBehaviour
             m_renderer.sprite = m_leftSprite;
         }
     }
+
+    public void levelUp()
+    {
+        nextLevelUp += 20;
+        level++;
+    }
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "PotionB")
@@ -123,11 +132,15 @@ public class PlayerBehavior : MonoBehaviour
             Destroy(other.gameObject);
             Debug.Log("You're faster !");
         }
-        if (other.gameObject.tag == "Exp")
+        if (other.gameObject.tag == "exp")
         {
             exp++;
             Destroy(other.gameObject);
             Debug.Log("You gain 1 exp !");
+            if (exp >= nextLevelUp)
+            {
+                levelUp();
+            }
         }
 
         if(other.gameObject.tag == "Arme")
@@ -140,6 +153,7 @@ public class PlayerBehavior : MonoBehaviour
         {
             StartCoroutine(Attack());
             Instantiate(luciole, other.gameObject.transform.position, Quaternion.identity);
+            enemyKilled++;
         }   
             
         IEnumerator Attack()

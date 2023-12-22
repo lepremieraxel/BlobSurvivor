@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class EnemyBehaviorShooter : MonoBehaviour
 {
-    public Transform player; // Référence au transform du joueur
-    public float moveSpeed = 2f; // Vitesse de déplacement de l'ennemi
+    public Transform player; // Rï¿½fï¿½rence au transform du joueur
+    public float moveSpeed = 2f; // Vitesse de dï¿½placement de l'ennemi
     public GameObject bulletPrefab; // Prefab du projectile
     public float fireRate = 1f; // Taux de tir en secondes
     private float nextFireTime = 1f; // Temps du prochain tir
@@ -15,7 +15,7 @@ public class EnemyBehaviorShooter : MonoBehaviour
     }
     void Update()
     {
-        // Déplacement de l'ennemi vers le joueur
+        // Dï¿½placement de l'ennemi vers le joueur
         Vector3 direction = player.transform.position - transform.position;
         direction.Normalize();
         transform.Translate(direction * moveSpeed * Time.deltaTime, Space.World);
@@ -28,7 +28,6 @@ public class EnemyBehaviorShooter : MonoBehaviour
             nextFireTime = Time.time + 1f / fireRate;
         }
     }
-
     void Shoot()
     {
         // Instanciation du projectile au point de tir

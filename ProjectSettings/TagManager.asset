@@ -10,7 +10,8 @@ TagManager:
   - bullet
   - PotionB
   - PotionV
-  - Exp
+  - Undefined
+  - exp
   - Arme
   layers:
   - Default
