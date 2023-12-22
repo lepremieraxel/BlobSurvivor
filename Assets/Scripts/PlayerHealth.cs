@@ -10,7 +10,7 @@ public class PlayerHealth : MonoBehaviour
     public PlayerBehavior playerBehavior;
     public int damagesTaken = 0;
     [SerializeField]
-    private GameObject dieScreen;
+    private GameObject DeathScreen;
 
     //public HealthBar healthBar;
     // Start is called before the first frame update
@@ -61,7 +61,7 @@ public class PlayerHealth : MonoBehaviour
     public void Death(){
         if(currentHealth == 0){
             Debug.Log("You are bad haha noob");
-            Instantiate(dieScreen, transform.position, Quaternion.identity);
+            DeathScreen.SetActive(true);
         }
     }
     
