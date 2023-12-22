@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - player
+  - enemy
+  - PotionR
+  - bullet
+  - PotionB
+  - PotionV
   layers:
   - Default
   - TransparentFX
