@@ -10,11 +10,14 @@ EditorBuildSettings:
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Menu.unity
-    guid: 6a21269132e0d4b4684dbc62f27b86f2
-  - enabled: 1
+    guid: 38636d4198549864181951b741dc0932
+  - enabled: 0
     path: Assets/Scenes/LudivineScene.unity
     guid: 6d71d58c6e85e3d449ea02f18586382c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/JulianeScene.unity
     guid: d4300d056f066374ebfc8b44b40f2870
+  - enabled: 0
+    path: Assets/Scenes/YouDied.unity
+    guid: 7a0157a7361e2d64fa62c3dd92fad2ef
   m_configObjects: {}

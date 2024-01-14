@@ -4,8 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - player
-  - enemy
   - PotionR
   - bullet
   - PotionB
@@ -13,6 +11,7 @@ TagManager:
   - Undefined
   - exp
   - Arme
+  - Enemy
   layers:
   - Default
   - TransparentFX

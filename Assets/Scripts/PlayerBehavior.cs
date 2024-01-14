@@ -119,7 +119,7 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
-    public void levelUp()
+    public void LevelUp()
     {
         nextLevelUp += 20;
         level++;
@@ -139,7 +139,7 @@ public class PlayerBehavior : MonoBehaviour
             Debug.Log("You gain 1 exp !");
             if (exp >= nextLevelUp)
             {
-                levelUp();
+                LevelUp();
             }
         }
 
