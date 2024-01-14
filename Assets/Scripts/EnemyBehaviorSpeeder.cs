@@ -19,11 +19,4 @@ public class EnemyBehaviorSpeeder : MonoBehaviour
         direction.Normalize();
         transform.Translate(direction * moveSpeed * Time.deltaTime, Space.World);
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-        }
-    }
 }

@@ -10,11 +10,14 @@ TagManager:
   - bullet
   - PotionB
   - PotionV
+  - Undefined
+  - exp
+  - Arme
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - OnCanva
   - Water
   - UI
   - 
