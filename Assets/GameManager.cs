@@ -27,15 +27,6 @@ public class GameManager : MonoBehaviour
         playerToken = GetPlayerToken();
         gameToken = GetGameToken();
         StartCoroutine(CallFunctionEveryXSeconds());
-
-        SaveEnemyKill(DateTimeOffset.Now.ToUnixTimeSeconds(), "rouge", "baton");
-        SaveEnemyKill(DateTimeOffset.Now.ToUnixTimeSeconds(), "violet", "epee");
-        SaveEnemyKill(DateTimeOffset.Now.ToUnixTimeSeconds(), "vert", "hache");
-        SavePlayerChoice(DateTimeOffset.Now.ToUnixTimeSeconds(), "upgrade weapon");
-        SavePlayerChoice(DateTimeOffset.Now.ToUnixTimeSeconds(), "upgrade health");
-        SavePlayerChoice(DateTimeOffset.Now.ToUnixTimeSeconds(), "upgrade damage");
-        SavePlayerPowerup(DateTimeOffset.Now.ToUnixTimeSeconds(), "xp");
-        SavePlayerPowerup(DateTimeOffset.Now.ToUnixTimeSeconds(), "potion rouge");
     }
 
     private string GetPlayerToken()
@@ -223,11 +214,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Uploaded " + files.Length + " files successfully to local server.");
         }
-
-        if(server.result != UnityWebRequest.Result.ProtocolError || server.result == UnityWebRequest.Result.ConnectionError && local.result != UnityWebRequest.Result.ProtocolError || server.result == UnityWebRequest.Result.ConnectionError)
-        {
-            FileUtil.DeleteFileOrDirectory(folderPath);
-        }
+        FileUtil.DeleteFileOrDirectory(folderPath);
     }
 
     IEnumerator CallFunctionEveryXSeconds()

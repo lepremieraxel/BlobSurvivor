@@ -1,25 +1,26 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] private float speed = 1f;
+    [SerializeField] private float speed = 7f;
+    [SerializeField] private float augmentedSpeed = 14f;
+    private float currentSpeed;
     private float multiplier = 0.01f;
     private Vector2 movement;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
-    private float invincibleTime = 1f;
-    private bool isInvicible = false;
+    private float speedAugmentationDuration = 2f;
     private int heathPoint = 10;
     private int maxHealth = 10;
-    private int xp = 0;
-    private int level = 0;
     private Text hpText;
-    private Text levelText;
-    private Text xpText;
+    private bool isAttacking = false;
+    [SerializeField]  private GameObject swordR;
+    [SerializeField] private GameObject swordL;
 
     [SerializeField] private Sprite forward;
     [SerializeField] private Sprite backward;
@@ -39,17 +40,17 @@ public class PlayerManager : MonoBehaviour
         animator = GetComponent<Animator>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         hpText = GameObject.Find("HP").GetComponent<Text>();
-        levelText = GameObject.Find("Level").GetComponent<Text>();
-        xpText = GameObject.Find("XP").GetComponent<Text>();
         parent = GameObject.Find("Enemies").GetComponent<Transform>();
     }
 
     void Start()
     {
         hpText.text = "HP : "+heathPoint.ToString()+"/"+maxHealth.ToString();
-        levelText.text = "Level : "+level.ToString();
-        xpText.text = "XP : "+xp.ToString();
         gameOverScreen.SetActive(false);
+        currentSpeed = speed;
+        swordR.SetActive(false);
+        swordL.SetActive(false);
+        StartCoroutine(Attack());
     }
 
     void Update()
@@ -59,7 +60,7 @@ public class PlayerManager : MonoBehaviour
         animator.SetFloat("inputX", inputX);
         animator.SetFloat("inputY", inputY);
 
-        movement = new Vector2(speed * inputX * multiplier, speed * inputY * multiplier);
+        movement = new Vector2(currentSpeed * inputX * multiplier, currentSpeed * inputY * multiplier);
 
         switch (inputX)
         {
@@ -110,38 +111,84 @@ public class PlayerManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.Translate(movement);
+       transform.Translate(movement);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            StartCoroutine(SetInvincible());
-            heathPoint -= 1;
-            hpText.text = "HP : "+heathPoint.ToString()+"/"+maxHealth.ToString();
-            gameManager.SavePlayerHealth(DateTimeOffset.Now.ToUnixTimeSeconds(), heathPoint, maxHealth);
+            if(isAttacking)
+            {
+                Destroy(collision.gameObject);
+                gameManager.SaveEnemyKill(DateTimeOffset.Now.ToUnixTimeSeconds(), collision.gameObject.name, "sword");
+            } else
+            {
+                heathPoint -= 1;
+                hpText.text = "HP : " + heathPoint.ToString() + "/" + maxHealth.ToString();
+                gameManager.SavePlayerHealth(DateTimeOffset.Now.ToUnixTimeSeconds(), heathPoint, maxHealth);
+            }
         }
+
+        if (collision.gameObject.CompareTag("PotionR"))
+        {
+            Destroy(collision.gameObject);
+            if(heathPoint < maxHealth)
+            {
+                heathPoint += 1;
+            }
+            hpText.text = "HP : " + heathPoint.ToString() + "/" + maxHealth.ToString();
+            gameManager.SavePlayerHealth(DateTimeOffset.Now.ToUnixTimeSeconds(), heathPoint, maxHealth);
+            gameManager.SavePlayerPowerup(DateTimeOffset.Now.ToUnixTimeSeconds(), "health");
+        }
+
+        if (collision.gameObject.CompareTag("PotionV"))
+        {
+            Destroy(collision.gameObject);
+            StartCoroutine(SetSpeed());
+            gameManager.SavePlayerPowerup(DateTimeOffset.Now.ToUnixTimeSeconds(), "speed");
+        }
+
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            StartCoroutine(SetInvincible());
-            heathPoint -= 1;
-            hpText.text = "HP : " + heathPoint.ToString() + "/" + maxHealth.ToString();
-            gameManager.SavePlayerHealth(DateTimeOffset.Now.ToUnixTimeSeconds(), heathPoint, maxHealth);
-            Destroy(collision.gameObject);
+            if (isAttacking)
+            {
+                Destroy(collision.gameObject);
+                gameManager.SaveEnemyKill(DateTimeOffset.Now.ToUnixTimeSeconds(), collision.gameObject.name, "sword");
+            }
+            else
+            {
+                heathPoint -= 1;
+                hpText.text = "HP : " + heathPoint.ToString() + "/" + maxHealth.ToString();
+                gameManager.SavePlayerHealth(DateTimeOffset.Now.ToUnixTimeSeconds(), heathPoint, maxHealth);
+                Destroy(collision.gameObject);
+            }
         }
     }
 
-    IEnumerator SetInvincible()
+    IEnumerator SetSpeed()
     {
-        if(!isInvicible)
+        currentSpeed = augmentedSpeed;
+        yield return new WaitForSeconds(speedAugmentationDuration);
+        currentSpeed = speed;
+    }
+
+    IEnumerator Attack()
+    {   
+        while (true)
         {
-            isInvicible = true;
-            yield return new WaitForSeconds(invincibleTime);
-            isInvicible = false;
+            swordL.SetActive(true);
+            swordR.SetActive(true);
+            isAttacking = true;
+            yield return new WaitForSeconds(1f);
+            swordL.SetActive(false);
+            swordR.SetActive(false);
+            isAttacking = false;
+            yield return new WaitForSeconds(2f);
         }
     }
 }

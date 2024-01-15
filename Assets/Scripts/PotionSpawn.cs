@@ -1,62 +1,64 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class PotionSpawn : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject potionR;
+    [SerializeField] private List<GameObject> potionsPrefab;
+    [SerializeField] private Vector2 spawnZone;
+    private Transform parent;
+    private GameObject player;
 
-    [SerializeField]
-    private GameObject potionV;
-
-    [SerializeField]
-    private GameObject potionB;
-
-    [SerializeField]
-    private Vector3 zoneSize;
-
-
-    // Update is called once per frame
-    void Start()
+    private void Awake()
     {
-        InvokeRepeating("SpawnPotion1", 0f, 5f);
-        InvokeRepeating("SpawnPotion2", 0f, 15f);
-        InvokeRepeating("SpawnPotion3", 0f, 20f);
+        parent = GameObject.Find("Potions").GetComponent<Transform>();
+        player = GameObject.Find("Player");
     }
 
-    void SpawnPotion1()
+    void Start()
     {
-        GameObject instantiated = Instantiate(potionR);
+        InvokeRepeating("SpawnPotionR", 0f, 5f);
+        InvokeRepeating("SpawnPotionV", 0f, 15f);
+    }
+
+    void Update()
+    {
+        transform.position = player.transform.position;
+    }
+
+    void SpawnPotionR()
+    {
+        GameObject instantiated = Instantiate(potionsPrefab[0], parent);
 
         instantiated.transform.position = new Vector3(
-            Random.Range(transform.position.x - zoneSize.x / 2, transform.position.x + zoneSize.x / 2),
-            Random.Range(transform.position.y - zoneSize.y / 2, transform.position.y + zoneSize.y / 2)
+            Random.Range(transform.position.x - spawnZone.x / 2, transform.position.x + spawnZone.x / 2),
+            Random.Range(transform.position.y - spawnZone.y / 2, transform.position.y + spawnZone.y / 2)
                 );
     }
 
-    void SpawnPotion2()
+    void SpawnPotionV()
     {
-        GameObject instantiated = Instantiate(potionV);
+        GameObject instantiated = Instantiate(potionsPrefab[1], parent);
 
         instantiated.transform.position = new Vector3(
-            Random.Range(transform.position.x - zoneSize.x / 2, transform.position.x + zoneSize.x / 2),
-            Random.Range(transform.position.y - zoneSize.y / 2, transform.position.y + zoneSize.y / 2)
+            Random.Range(transform.position.x - spawnZone.x / 2, transform.position.x + spawnZone.x / 2),
+            Random.Range(transform.position.y - spawnZone.y / 2, transform.position.y + spawnZone.y / 2)
             );
     }
 
-    void SpawnPotion3()
+    void SpawnPotionB()
     {
-        GameObject instantiated = Instantiate(potionB);
+        GameObject instantiated = Instantiate(potionsPrefab[2], parent);
         instantiated.transform.position = new Vector3(
-            Random.Range(transform.position.x - zoneSize.x / 2, transform.position.x + zoneSize.x / 2),
-            Random.Range(transform.position.y - zoneSize.y / 2, transform.position.y + zoneSize.y / 2)
+            Random.Range(transform.position.x - spawnZone.x / 2, transform.position.x + spawnZone.x / 2),
+            Random.Range(transform.position.y - spawnZone.y / 2, transform.position.y + spawnZone.y / 2)
              );
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position, zoneSize);
+        Gizmos.DrawWireCube(transform.position, spawnZone);
     }
 
 

@@ -35,6 +35,7 @@ public class EnemiesSpawner : MonoBehaviour
         GameObject instance = Instantiate(enemiesPrefab[0], parent);
         string name = "vert";
         instance.transform.position = new Vector2(Random.Range(transform.position.x - spawnZone.x / 2, transform.position.x + spawnZone.x / 2), Random.Range(transform.position.y - spawnZone.y / 2, transform.position.y + spawnZone.y / 2));
+        instance.name = name;
         gameManager.SaveEnemySpawn(DateTimeOffset.Now.ToUnixTimeSeconds(), name);
     }
     private void SpawnShooter()
@@ -42,6 +43,7 @@ public class EnemiesSpawner : MonoBehaviour
         GameObject instance = Instantiate(enemiesPrefab[1], parent);
         string name = "rouge";
         instance.transform.position = new Vector2(Random.Range(transform.position.x - spawnZone.x / 2, transform.position.x + spawnZone.x / 2), Random.Range(transform.position.y - spawnZone.y / 2, transform.position.y + spawnZone.y / 2));
+        instance.name = name;
         gameManager.SaveEnemySpawn(DateTimeOffset.Now.ToUnixTimeSeconds(), name);
     }
     private void SpawnSpeeder()
@@ -49,6 +51,7 @@ public class EnemiesSpawner : MonoBehaviour
         GameObject instance = Instantiate(enemiesPrefab[2], parent);
         string name = "violet";
         instance.transform.position = new Vector2(Random.Range(transform.position.x - spawnZone.x / 2, transform.position.x + spawnZone.x / 2), Random.Range(transform.position.y - spawnZone.y / 2, transform.position.y + spawnZone.y / 2));
+        instance.name = name;
         gameManager.SaveEnemySpawn(DateTimeOffset.Now.ToUnixTimeSeconds(), name);
     }
 
